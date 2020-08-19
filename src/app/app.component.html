@@ -1,0 +1,44 @@
+<div class="main row">
+    <div class="col-2 sidebar" *ngIf="auth.isAuthenticated">
+        <h3 class="title">Face Recognition</h3>
+        <ul *ngFor="let route of routeList" class="nav flex-column">
+            <li class="nav-item">
+                <a (click)="ChangeActiveState(route.name)" id="{{route.name}}" class="nav-link active" routerLink="/{{route.path}}">
+                    <i class="tim-icons {{route.icon}}" id="icon-{{route.name}}"></i>
+                    {{route.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col window">
+        <div class="topbar" *ngIf="auth.isAuthenticated">
+            <div class="pagename">
+                <h2 class=""><strong><i class="tim-icons icon-link-72"></i>{{currentActive}}</strong></h2>
+            </div>
+            <div class="userdetail">
+                <div class="dropdown nav-item" dropdown>
+                    <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" dropdownToggle>
+                        Logged in as Lexi Anugrah
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
+                      <a class="dropdown-item">
+                        <i class="tim-icons icon-paper"> </i> Documentation
+                      </a>
+                    </div>
+                </div>
+                {{Time | date:'MMM d, y h:mm:ss a'}}
+            </div>
+        </div>
+        <div class="container">
+            <alert *ngIf="messanger.messages.length > 0" class="alert-with-icon" [type]="'info alert-with-icon'"  [dismissible]="true">
+                <span class="tim-icons icon-trophy" data-notify="icon">
+                </span>
+                <span>
+                    {{messanger.messages}}
+                </span>
+            </alert>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
