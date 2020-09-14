@@ -1,1 +1,31 @@
-home works!
+<div>
+    <div class="chartholder">
+        <canvas id="Chart"></canvas>
+    </div>
+    <div class="tablecontainer" @fade>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th>Name</th>
+                    <th>User ID</th>
+                    <th>Camera ID</th>
+                    <th class="text-right">Last Seen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of logs;let index = index">
+                    <td class="text-center">{{index+1}}</td>
+                    <td>{{log.name}}</td>
+                    <td>{{log.user}}</td>
+                    <td>{{log.camera}}</td>
+                    <td class="text-right">{{log.updated_at | date:'EEE d MMM, y h:mm:ss a'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <pagination class=" justify-content-center" [(ngModel)]="logs" [totalItems]="logs.length">
+            </pagination>
+        </nav>
+    </div>
+</div>

@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   Login(event) {
-    console.log("login")
     this.auth.Login(event.target.username.value, event.target.password.value).subscribe(res => {
       localStorage.setItem("name",res.data.name)
       localStorage.setItem("role",res.data.role)
@@ -29,7 +28,11 @@ export class LoginComponent implements OnInit {
       this.messanger.Notify("Login success!")
       this.route.navigate(["home"])
     }, err => {
-        this.messanger.Notify("Incorrect password or username")
+        // console.log()
+        // this.messanger.Notify("Incorrect password or username")
+        this.messanger.Notify(err['message'])
+        // console.log(err['message'])
+
     })
   }
   

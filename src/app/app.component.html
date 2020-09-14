@@ -1,5 +1,5 @@
 <div class="main row">
-    <div class="col-2 sidebar" *ngIf="auth.isAuthenticated">
+    <div class="col-2 sidebar" *ngIf="authguard.isAuthenticated">
         <h3 class="title">Face Recognition</h3>
         <ul *ngFor="let route of routeList" class="nav flex-column">
             <li class="nav-item">
@@ -11,18 +11,18 @@
         </ul>
     </div>
     <div class="col window">
-        <div class="topbar" *ngIf="auth.isAuthenticated">
+        <div class="topbar" *ngIf="authguard.isAuthenticated">
             <div class="pagename">
                 <h2 class=""><strong><i class="tim-icons icon-link-72"></i>{{currentActive}}</strong></h2>
             </div>
-            <div class="userdetail">
+            <div class="userdetail" style="display: inline-block;">
                 <div class="dropdown nav-item" dropdown>
                     <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" dropdownToggle>
                         Logged in as Lexi Anugrah
                     </a>
                     <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-                      <a class="dropdown-item">
-                        <i class="tim-icons icon-paper"> </i> Documentation
+                      <a class="dropdown-item" *ngFor="let sub of subMenu" (click)=subMenuEvent(sub.action)>
+                        <i class="tim-icons {{sub.icon}}"></i> {{sub.name}}
                       </a>
                     </div>
                 </div>
@@ -30,14 +30,19 @@
             </div>
         </div>
         <div class="container">
-            <alert *ngIf="messanger.messages.length > 0" class="alert-with-icon" [type]="'info alert-with-icon'"  [dismissible]="true">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- <div class="message" id="message" [@fade]="messanger.messages.length > 0 ? 'open' :'closed'">    -->
+        <div class="message" id="message">   
+        <div class="messagecontainer">
+            <alert class="alert-with-icon" [type]="'info alert-with-icon'"  [dismissible]="true">
                 <span class="tim-icons icon-trophy" data-notify="icon">
                 </span>
                 <span>
                     {{messanger.messages}}
                 </span>
             </alert>
-            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

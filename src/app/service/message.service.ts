@@ -10,6 +10,7 @@ export class MessageService {
   Notify(message:string) {
     this.messages.push(message)
     setTimeout(() => {
+      document.getElementById("message").style.visibility = "visible"
       this.messages.pop()
     }, 3000);
   }

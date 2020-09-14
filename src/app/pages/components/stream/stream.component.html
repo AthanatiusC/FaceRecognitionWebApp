@@ -1,0 +1,6 @@
+<div *ngIf="frame != undefined">
+    <!-- {{frame['0']}} -->
+    <div *ngFor="let cam of channelid;let i =index">
+        <img src="{{frame[i]}}" alt="">
+    </div>
+</div>

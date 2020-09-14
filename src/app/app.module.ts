@@ -5,6 +5,9 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
+
 
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 import { ProgressbarModule } from "ngx-bootstrap/progressbar";
@@ -25,7 +28,6 @@ import { IndexComponent } from "./pages/index/index.component";
 import { ProfilepageComponent } from "./pages/examples/profilepage/profilepage.component";
 import { RegisterpageComponent } from "./pages/examples/registerpage/registerpage.component";
 import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
-import { TopbarComponent } from './components/topbar/topbar.component';
 
 export function tokenGetter() {
   return localStorage.getItem("auth_key");
@@ -34,7 +36,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    TopbarComponent
     // IndexComponent,
     // ProfilepageComponent,
     // RegisterpageComponent,
@@ -49,16 +50,17 @@ export function tokenGetter() {
     ReactiveFormsModule,
     PopoverModule.forRoot(),
     BsDropdownModule.forRoot(),
-    // ProgressbarModule.forRoot(),
-    // TooltipModule.forRoot(),
-    // CollapseModule.forRoot(),
-    // TabsModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    TooltipModule.forRoot(),
+    CollapseModule.forRoot(),
+    TabsModule.forRoot(),
     PagesModule,
-    // PaginationModule.forRoot(),
+    PaginationModule.forRoot(),
     AlertModule.forRoot(),
-    // BsDatepickerModule.forRoot(),
-    // CarouselModule.forRoot(),
-    // ModalModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    CarouselModule.forRoot(),
+    ModalModule.forRoot(),
+    SocketIoModule.forRoot(config),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

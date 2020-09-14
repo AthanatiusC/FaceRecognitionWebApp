@@ -27,6 +27,10 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { SettingComponent } from './setting/setting.component';
 import { LoginComponent } from './login/login.component';
 
+
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { StreamComponent } from './components/stream/stream.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -55,7 +59,9 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     AttendanceComponent,
     SettingComponent,
-    LoginComponent
+    LoginComponent,
+    TopbarComponent,
+    StreamComponent
   ],
   exports: [
     IndexComponent,

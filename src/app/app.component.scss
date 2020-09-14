@@ -53,6 +53,31 @@ h1,h2,h3{
 }.userdetail{
     text-align: right;
     float: right;
-    width: 370px;
+    width: 330px;
     padding: 20px 20px 0px 0px;
+}
+.dropdown-menu,.dropdown-with-icons{
+    background-color: #171941;
+    right: 0px !important;
+    left: auto !important;
+}
+.dropdown-menu::before{
+    color: #171941;
+}
+.messagecontainer{
+    margin:20px;
+    position: relative;
+}
+.message{
+    display: inline-block;
+    margin: auto;
+    width: 400px;
+    z-index: 10;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    visibility: hidden;
 }
